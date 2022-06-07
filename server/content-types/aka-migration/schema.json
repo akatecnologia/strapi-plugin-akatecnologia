@@ -1,7 +1,7 @@
 {
-  "kind": "collectionType",
   "collectionName": "aka_migrations",
   "info": {
+    "kind": "collectionType",
     "singularName": "aka-migration",
     "pluralName": "aka-migrations",
     "displayName": "AKAMigration"

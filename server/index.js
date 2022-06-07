@@ -9,7 +9,7 @@ const routes = require('./routes');
 const services = require('./services');
 const contentTypes = require('./content-types');
 
-module.exports = {
+module.exports = () => ({
   register,
   bootstrap,
   destroy,
@@ -20,4 +20,4 @@ module.exports = {
   contentTypes,
   policies: {},
   middlewares: {},
-};
+});
