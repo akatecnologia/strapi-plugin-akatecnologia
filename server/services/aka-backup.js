@@ -20,15 +20,15 @@ module.exports = createCoreService('plugin::aka-plugins.aka-backup', ({ strapi }
         let dumpFileName;
         try {
 
-            dumpFileName = await strapi.plugin('aka-plugins').service('akaBackup').doBackup();
+            dumpFileName = await strapi.plugin('aka-plugins').service('aka-backup').doBackup();
             const fileSizeInBytes = fs.statSync(dumpFileName).size;
             if (fileSizeInBytes === 0){
                 fs.unlinkSync(dumpFileName);
                 throw Error(`Unable to dump db`); 
             }
-            await strapi.plugin('aka-plugins').service('akaBackup').compressFile(dumpFileName);
+            await strapi.plugin('aka-plugins').service('aka-backup').compressFile(dumpFileName);
             fs.unlinkSync(dumpFileName);
-            await strapi.plugin('aka-plugins').service('akaBackup')
+            await strapi.plugin('aka-plugins').service('aka-backup')
                 .uploadFile(`${path.basename(dumpFileName)}.zip`, `${dumpFileName}.zip`);
 
         } catch (err) {
@@ -41,7 +41,7 @@ module.exports = createCoreService('plugin::aka-plugins.aka-backup', ({ strapi }
 
     doBackup: async () => {
     
-        await strapi.plugin('aka-plugins').service('akaBackup').cleanOldBackups();
+        await strapi.plugin('aka-plugins').service('aka-backup').cleanOldBackups();
 
         const doBackupPromise = new Promise((resolve, reject) => {
 

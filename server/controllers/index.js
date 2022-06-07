@@ -6,7 +6,7 @@ const akaMigration = require('./aka-migration');
 
 module.exports = {
   mainController,
-  akaBackup,
-  akaMigration
+  'aka-backup': akaBackup,
+  'aka-migration': akaMigration
 };
 

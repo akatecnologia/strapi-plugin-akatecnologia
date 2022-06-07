@@ -18,12 +18,12 @@ module.exports = createCoreService('plugin::aka-plugins.aka-migration', ({ strap
 
         for await(const migrationName of migrationFolders) {
 
-            if (await strapi.plugin('aka-plugins').service('akaMigration').alreadyMigrated(migrationName))
+            if (await strapi.plugin('aka-plugins').service('aka-migration').alreadyMigrated(migrationName))
                 continue;
             
             console.log(`MIGRATION - Executando ${migrationName}`)
-            await strapi.plugin('aka-plugins').service('akaMigration').doMigrate(migrationName);
-            await strapi.plugin('aka-plugins').service('akaMigration').saveMigration(migrationName);
+            await strapi.plugin('aka-plugins').service('aka-migration').doMigrate(migrationName);
+            await strapi.plugin('aka-plugins').service('aka-migration').saveMigration(migrationName);
             console.log(`MIGRATION - Fim da Execução ${migrationName}`)
         }
     },

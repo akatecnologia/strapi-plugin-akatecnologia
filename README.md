@@ -12,4 +12,4 @@
     secretAccessKey: <secretKey>,
     backupFolder:<backupFolder> 
   } em "config/server.js";
-- Adicionar "await strapi.plugin('aka-plugins').service('akaBackup').doBackupWithCompress()" ao cron.
+- Adicionar "await strapi.plugin('aka-plugins').service('aka-backup').doBackupWithCompress()" ao cron.

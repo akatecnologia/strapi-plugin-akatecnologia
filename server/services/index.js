@@ -7,7 +7,7 @@ const akaMonitor  = require('./aka-monitor');
 
 module.exports = {
   mainService,
-  akaBackup,
-  akaMigration,
-  akaMonitor
+  'aka-backup': akaBackup,
+  'aka-migration': akaMigration,
+  'aka-monitor': akaMonitor
 };
