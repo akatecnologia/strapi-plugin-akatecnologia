@@ -1,9 +1,9 @@
 'use strict';
 
-const akaBackup = require('./aka-backup/schema');
-const akaMigration = require('./aka-migration/schema');
+const akaBackup = require('./aka-backup');
+const akaMigration = require('./aka-migration');
 
 module.exports = {
-    'aka-backup': { schema: akaBackup },
-    'aka-migration': { schema: akaMigration }
+    'aka-backup': akaBackup,
+    'aka-migration': akaMigration
 }; 
