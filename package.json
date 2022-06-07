@@ -3,20 +3,31 @@
   "version": "1.0.0",
   "description": "This is the description of the plugin.",
   "strapi": {
-    "name": "aka-plugins",
+    "name": "strapi-plugin-akatecnologia",
     "description": "Description of aka-plugins plugin",
     "kind": "plugin"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akatecnologia/strapi-plugin-akatecnologia.git"
   },
   "dependencies": {
     "archiver": "^5.3.0",
     "aws-sdk": "^2.963.0"
   },
+  "peerDependencies": {
+    "@strapi/strapi": "^4.0.0"
+  },  
   "author": {
-    "name": "A Strapi developer"
+    "name": "AKA Tecnologia",
+    "email": "aka@akatecnologia.com",
+    "url": "https://akatecnologia.com"
   },
   "maintainers": [
     {
-      "name": "A Strapi developer"
+      "name": "AKA Tecnologia",
+      "email": "aka@akatecnologia.com",
+      "url": "https://akatecnologia.com"
     }
   ],
   "engines": {
