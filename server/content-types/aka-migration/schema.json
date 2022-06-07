@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "aka_migrations",
+  "info": {
+    "singularName": "aka-migration",
+    "pluralName": "aka-migrations",
+    "displayName": "AKAMigration"
+  },
+  "options": {
+    "draftAndPublish": false,
+    "comment": ""
+  },
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "When": {
+      "type": "datetime"
+    }
+  }
+}

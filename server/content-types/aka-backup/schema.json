@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "aka_backups",
+  "info": {
+    "singularName": "aka-backup",
+    "pluralName": "aka-backups",
+    "displayName": "AKABackup"
+  },
+  "options": {
+    "draftAndPublish": false,
+    "comment": ""
+  },
+  "attributes": {
+    "Name": {
+      "type": "text"
+    }
+  }
+}
