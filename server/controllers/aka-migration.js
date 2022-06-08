@@ -6,4 +6,4 @@
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('plugin::aka-plugins.aka-migration'); 
+module.exports = createCoreController('plugin::strapi-plugin-akatecnologia.aka-migration'); 

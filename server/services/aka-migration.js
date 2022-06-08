@@ -9,7 +9,7 @@ const fs = require('fs')
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('plugin::aka-plugins.aka-migration', ({ strapi }) =>  ({
+module.exports = createCoreService('plugin::strapi-plugin-akatecnologia.aka-migration', ({ strapi }) =>  ({
 
     syncMigration: async () => {
         
@@ -18,12 +18,12 @@ module.exports = createCoreService('plugin::aka-plugins.aka-migration', ({ strap
 
         for await(const migrationName of migrationFolders) {
 
-            if (await strapi.plugin('aka-plugins').service('aka-migration').alreadyMigrated(migrationName))
+            if (await strapi.plugin('strapi-plugin-akatecnologia').service('aka-migration').alreadyMigrated(migrationName))
                 continue;
             
             console.log(`MIGRATION - Executando ${migrationName}`)
-            await strapi.plugin('aka-plugins').service('aka-migration').doMigrate(migrationName);
-            await strapi.plugin('aka-plugins').service('aka-migration').saveMigration(migrationName);
+            await strapi.plugin('strapi-plugin-akatecnologia').service('aka-migration').doMigrate(migrationName);
+            await strapi.plugin('strapi-plugin-akatecnologia').service('aka-migration').saveMigration(migrationName);
             console.log(`MIGRATION - Fim da Execução ${migrationName}`)
         }
     },
@@ -37,7 +37,7 @@ module.exports = createCoreService('plugin::aka-plugins.aka-migration', ({ strap
  
     alreadyMigrated: async (migrationName) => {
 
-        const migration = await strapi.query('plugin::aka-plugins.aka-migration').findOne({
+        const migration = await strapi.query('plugin::strapi-plugin-akatecnologia.aka-migration').findOne({
             where: { 
               Name: migrationName
             }
@@ -48,7 +48,7 @@ module.exports = createCoreService('plugin::aka-plugins.aka-migration', ({ strap
 
     saveMigration: async (migrationName) => {
 
-        await strapi.query('plugin::aka-plugins.aka-migration').create({
+        await strapi.query('plugin::strapi-plugin-akatecnologia.aka-migration').create({
             data: {
                 Name:migrationName,
                 When: new Date()

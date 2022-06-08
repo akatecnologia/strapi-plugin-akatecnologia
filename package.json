@@ -1,10 +1,10 @@
 {
   "name": "strapi-plugin-akatecnologia",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "This is the description of the plugin.",
   "strapi": {
     "name": "strapi-plugin-akatecnologia",
-    "description": "Description of aka-plugins plugin",
+    "description": "Description of strapi-plugin-akatecnologia plugin",
     "kind": "plugin"
   },
   "repository": {

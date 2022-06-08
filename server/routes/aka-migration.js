@@ -6,4 +6,4 @@
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('plugin::aka-plugins.aka-migration'); 
+module.exports = createCoreRouter('plugin::strapi-plugin-akatecnologia.aka-migration'); 

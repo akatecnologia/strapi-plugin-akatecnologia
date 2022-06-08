@@ -1,8 +1,7 @@
 {
-  
+  "kind": "collectionType",
   "collectionName": "aka_backups",
   "info": {
-    "kind": "collectionType",
     "singularName": "aka-backup",
     "pluralName": "aka-backups",
     "displayName": "AKABackup"

@@ -9,7 +9,7 @@ const fs = require('fs')
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('plugin::aka-plugins.aka-migration', ({ strapi }) =>  ({
+module.exports = createCoreService('plugin::strapi-plugin-akatecnologia.aka-migration', ({ strapi }) =>  ({
 
     initializeMiddleware: async () => {
         
