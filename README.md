@@ -11,4 +11,9 @@
     secretAccessKey: <secretKey>,
     backupFolder:<backupFolder> 
   } em "config/server.js";
+  OU
+- Adicionar azureBlob: { 
+    connStr: <connStr>,
+    backupContainer:<backupContainer> 
+  } em "config/server.js";  
 - Adicionar "await strapi.plugin('strapi-plugin-akatecnologia').service('aka-backup').doBackupWithCompress()" ao cron.

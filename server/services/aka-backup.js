@@ -29,7 +29,7 @@ module.exports = createCoreService('plugin::strapi-plugin-akatecnologia.aka-back
             await strapi.plugin('strapi-plugin-akatecnologia').service('aka-backup').compressFile(dumpFileName);
             fs.unlinkSync(dumpFileName);
             await strapi.plugin('strapi-plugin-akatecnologia').service('aka-backup')
-                .uploadFileAzure( `${dumpFileName}.zip`, `${subFolder}/${path.basename(dumpFileName)}.zip`,"backups");
+                .uploadFileAzure( `${dumpFileName}.zip`, `${subFolder}/${path.basename(dumpFileName)}.zip`);
 
         } catch (err) {
             throw Error(`Unable to create zip file. error: ${err.toString()}`);
@@ -137,10 +137,12 @@ module.exports = createCoreService('plugin::strapi-plugin-akatecnologia.aka-back
         return data.Location;
     },
 
-    uploadFileAzure: async (localFilePath, blobName, container = null) => {
+    uploadFileAzure: async (localFilePath, blobName) => {
         const connStr = strapi.config.get('server.azureBlob.connStr');
+        const container = strapi.config.server.azureBlob.backupContainer;
+
         const blobServiceClient = BlobServiceClient.fromConnectionString(connStr);
-        const containerClient = blobServiceClient.getContainerClient(container ?? defaultContainer);
+        const containerClient = blobServiceClient.getContainerClient(container ?? 'backups');
 
         const blockBlobClient = containerClient.getBlockBlobClient(blobName);
         return await blockBlobClient.uploadFile(localFilePath);
