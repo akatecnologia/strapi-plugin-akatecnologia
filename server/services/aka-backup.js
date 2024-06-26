@@ -30,8 +30,9 @@ module.exports = createCoreService('plugin::strapi-plugin-akatecnologia.aka-back
             fs.unlinkSync(dumpFileName);
             await strapi.plugin('strapi-plugin-akatecnologia').service('aka-backup')
                 .uploadFileAzure( `${dumpFileName}.zip`, `${subFolder}/${path.basename(dumpFileName)}.zip`);
-
+            forceRemoveFile(`${dumpFileName}.zip`)
         } catch (err) {
+            forceRemoveFile(`${dumpFileName}.zip`)
             throw Error(`Unable to create zip file. error: ${err.toString()}`);
         }
 
@@ -42,7 +43,7 @@ module.exports = createCoreService('plugin::strapi-plugin-akatecnologia.aka-back
     doBackup: async () => {
     
         await strapi.plugin('strapi-plugin-akatecnologia').service('aka-backup').cleanOldBackups();
-
+        
         const doBackupPromise = new Promise((resolve, reject) => {
 
             const dumpFileName = `${backupsPath}/${Math.round(Date.now() / 1000)}.dump.sql`;
@@ -147,7 +148,14 @@ module.exports = createCoreService('plugin::strapi-plugin-akatecnologia.aka-back
         const blockBlobClient = containerClient.getBlockBlobClient(blobName);
         return await blockBlobClient.uploadFile(localFilePath);
     },        
-
-
-
 }));
+
+function forceRemoveFile(filePath){
+    try {
+        fs.rmSync(filePath, {
+            force: true,
+        });
+    } catch (err) {
+        console.log(`forceRemoveFile error: ${err}`)
+    }
+}
